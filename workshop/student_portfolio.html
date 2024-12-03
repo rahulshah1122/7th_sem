@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #ffffff; /* Standard white background */
+            color: #333;
+        }
+
+        /* Header styling with flexbox */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #00b894; /* Fresh greenish header */
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #ddd;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .dropdown-container {
+            position: relative;
+            margin-left: 15%; /* Slightly moved to the left */
+        }
+
+        select {
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            margin-right: 70px;
+            border: 2px solid #00b894;
+            outline: none;
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        select:hover {
+            background-color: #00b894;
+            color: white;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main content styling */
+        main {
+            margin-top: 130px; /* Adjusted for fixed header height */
+            padding: 3rem 2rem;
+            display: block;
+            text-align: center;
+        }
+
+        /* Styling for the student portfolio container */
+        .student-card {
+            background: white;
+            border: 3px solid #00b894;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            max-width: 350px;
+            margin: 20px auto;
+            padding: 2rem;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: none; /* Initially hide all cards */
+        }
+        .student-card.visible {
+            display: block; /* Show the selected student */
+        }
+
+        .student-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            border: 4px solid #00b894;
+        }
+
+        .student-card h2 {
+            font-size: 2rem;
+            margin: 0.5rem 0;
+            color: #00b894;
+            font-weight: bold;
+            text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8);
+        }
+
+        .student-card p {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .student-card p:last-child {
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>7th Sem Students Portfolio</h1>
+        <div class="dropdown-container">
+            <select id="studentSelect">
+                <option value="">Select a Student</option>
+                <option value="student1">Jyoti Dangal</option>
+                <option value="student2">Renu Singh</option>
+                <!-- Add more students here -->
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div id="student1" class="student-card">
+            <img src="abc.jpg" alt="Student Photo">
+            <h2>Jyoti Dangal</h2>
+            <p><strong>Hobbies:</strong> Coding, Reading, Hiking</p>
+            <p><strong>Skills:</strong> Python, C++, IoT development</p>
+            <p><strong>Dream Project:</strong> Building an AI-driven educational platform to enhance learning experiences.</p>
+            <p><strong>Thoughts/Inspiration:</strong> "Being a computer engineering student feels like exploring endless opportunities to shape the future using technology."</p>
+        </div>
+
+        <div id="student2" class="student-card">
+            <img src="student2.jpg" alt="Student Photo">
+            <h2>Renu Singh</h2>
+            <p><strong>Hobbies:</strong> Photography, Gaming, Travelling</p>
+            <p><strong>Skills:</strong> Data Analysis, Machine Learning, Web Development</p>
+            <p><strong>Dream Project:</strong> Creating a smart health monitoring system using IoT and AI.</p>
+            <p><strong>Thoughts/Inspiration:</strong> "Computer engineering has taught me how to turn ideas into impactful solutions through innovation."</p>
+        </div>
+
+        <!-- Add more student cards here -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 BE Computer | Kantipur City College</p>
+    </footer>
+
+    <script>
+        // JavaScript to handle the dropdown selection and show corresponding portfolio
+        const studentSelect = document.getElementById('studentSelect');
+        const allCards = document.querySelectorAll('.student-card');
+        const dropdownContainer = document.querySelector('.dropdown-container');
+
+        // Function to reset the dropdown and show all students
+        function showAllStudents() {
+            allCards.forEach(card => card.classList.add('visible'));
+        }
+
+        // Handle dropdown selection change
+        studentSelect.addEventListener('change', function () {
+            const selectedStudent = studentSelect.value;
+
+            // Hide all student cards
+            allCards.forEach(card => card.classList.remove('visible'));
+
+            if (selectedStudent === "") {
+                // If no student is selected, show all students
+                showAllStudents();
+            } else {
+                // Show the selected student card only
+                const selectedCard = document.getElementById(selectedStudent);
+                if (selectedCard) {
+                    selectedCard.classList.add('visible');
+                }
+            }
+        });
+
+        // Initially show all students
+        showAllStudents();
+    </script>
+</body>
+</html>

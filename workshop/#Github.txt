@@ -1,0 +1,64 @@
+#Github
+***** different branches of the GitHub **************
+
+dev=>quality assurance=> user acceptance testing=>production/live
+
+
+
+
+******************* end *********************************** 
+
+#Docker 
+
+-It creates a container it is instance of  docker image
+-here class is docker image and object is container
+
+-Due to trouble in handling virtual machine(an software system that acts as a new computer and have its own processor ,operating system, storage) ,Docker is comes with its structured model to overcome the difficulties of the virtual machine
+
+#### Version controller for docker ############
+-Docker hub
+-install MySQL
+- we can write query to create database in docker 
+
+
+
+
+
+************************************************************
+-->Need to read the documentation 
+--> approach of code writing for e:g: jyotiDangal or JyotiDangal
+### Naming Conventions with Examples:
+
+1. **Camel Case**  
+   `studentAge = 20`
+
+2. **Pascal Case**  
+   `StudentAge = 20`
+
+3. **Snake Case**  
+   `student_age = 20`
+
+4. **Kebab Case**  
+   `student-age: 20`
+
+5. **Screaming Snake Case**  
+   `STUDENT_AGE = 20`
+
+6. **Hungarian Notation**  
+   `int iStudentAge = 20`
+
+7. **Train Case**  
+   `Student-Age`
+
+8. **Dot Notation**  
+   `app.version = "1.0.0"`
+
+9. **Flat Case**  
+   `studentage = 20`
+
+*********************************************************
+
+
+
+
+*********************** end ********************************
